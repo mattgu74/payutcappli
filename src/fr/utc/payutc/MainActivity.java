@@ -18,8 +18,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 	connectingbutton = (Button) findViewById(R.id.connect);
-	connectingbutton.setOnClickListener(new View.OnClickListener() {
-  			
+	connectingbutton.setOnClickListener(new View.OnClickListener() {	
     	@Override
     	public void onClick(View v) {
     		Intent intent = new Intent(MainActivity.this, TabBar.class);

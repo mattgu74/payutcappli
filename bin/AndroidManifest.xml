@@ -46,6 +46,10 @@
             android:name="fr.utc.payutc.EtatIvresseTab"
             android:label="@string/title_activity_etat_ivresse_tab" >
         </activity>
+        <activity
+            android:name="fr.utc.payutc.VirementTab"
+            android:label="@string/title_activity_virement_tab" >
+        </activity>
     </application>
 
 </manifest>
