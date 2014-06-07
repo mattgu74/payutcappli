@@ -46,6 +46,8 @@
             android:name="fr.utc.payutc.EtatIvresseTab"
             android:label="@string/title_activity_etat_ivresse_tab" >
         </activity>
+        <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
