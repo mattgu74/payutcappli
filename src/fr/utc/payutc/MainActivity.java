@@ -9,6 +9,11 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.SingleClientConnManager;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +32,19 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 //peer authentification
+		HostnameVerifier hostnameVerifier = org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
+//
+//		DefaultHttpClient client = new DefaultHttpClient();
+//
+//		SchemeRegistry registry = new SchemeRegistry();
+//		SSLSocketFactory socketFactory = SSLSocketFactory.getSocketFactory();
+//		socketFactory.setHostnameVerifier((X509HostnameVerifier) hostnameVerifier);
+//		registry.register(new Scheme("https", socketFactory, 443));
+//		SingleClientConnManager mgr = new SingleClientConnManager(client.getParams(), registry);
+//		DefaultHttpClient httpClient = new DefaultHttpClient(mgr, client.getParams());
+//
+//		// Set verifier     
+//		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
 		HttpsURLConnection.setDefaultSSLSocketFactory(createAdditionalCertsSSLSocketFactory());
 		HostnameVerifier v = new HostnameVerifier() {
         	public boolean verify(String hostname, SSLSession session) {
