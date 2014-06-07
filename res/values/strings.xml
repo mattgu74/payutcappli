@@ -4,5 +4,11 @@
     <string name="app_name">payutc</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_tab_bar">TabBar</string>
+    <string name="title_activity_home_tab">HomeTab</string>
+    <string name="title_activity_rechargement_tab">RechargementTab</string>
+    <string name="title_activity_historique_tab">HistoriqueTab</string>
+    <string name="title_activity_etat_ivresse_bar">EtatIvresseBar</string>
+    <string name="title_activity_etat_ivresse_tab">EtatIvresseTab</string>
 
 </resources>

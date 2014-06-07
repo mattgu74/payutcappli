@@ -2,33 +2,23 @@ package fr.utc.payutc;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.TabActivity;
 import android.content.Intent;
-import android.view.Menu;
-import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
 
-public class MainActivity extends TabActivity {
+import android.view.Menu;
+
+
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+	
+	private Button connectingbutton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tab);
-		
-		TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
-		
-		TabSpec firstTabSpec = tabHost.newTabSpec("tid1");
-		TabSpec secondTabSpec = tabHost.newTabSpec("tid1");
-
-		/** TabSpec setIndicator() is used to set name for the tab. */
-		/** TabSpec setContent() is used to set content for a particular tab. */
-		firstTabSpec.setIndicator("First Tab Name").setContent(new Intent(this, FirstTab.class));
-		secondTabSpec.setIndicator("Second Tab Name").setContent(new Intent(this, SecondTab.class));
-
-		/** Add tabSpec to the TabHost to display. */
-		tabHost.addTab(firstTabSpec);
-		tabHost.addTab(secondTabSpec);
-		
+		setContentView(R.layout.activity_main);
 	}
 
 	@Override
@@ -38,4 +28,12 @@ public class MainActivity extends TabActivity {
 		return true;
 	}
 
-}
+	connectingbutton = (Button) findViewById(R.id.connect);
+	connectingbutton.setOnClickListener(new View.OnClickListener() {
+  			
+    	@Override
+    	public void onClick(View v) {
+    		Intent intent = new Intent(MainActivity.this, TabBar.class);
+    		startActivity(intent);
+    		}
+    	

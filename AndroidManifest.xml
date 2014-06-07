@@ -22,6 +22,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="fr.utc.payutc.TabBar"
+            android:label="@string/title_activity_tab_bar" >
+        </activity>
+        <activity
+            android:name="fr.utc.payutc.HomeTab"
+            android:label="@string/title_activity_home_tab" >
+        </activity>
+        <activity
+            android:name="fr.utc.payutc.RechargementTab"
+            android:label="@string/title_activity_rechargement_tab" >
+        </activity>
+        <activity
+            android:name="fr.utc.payutc.HistoriqueTab"
+            android:label="@string/title_activity_historique_tab" >
+        </activity>
+        <activity
+            android:name="fr.utc.payutc.EtatIvresseBar"
+            android:label="@string/title_activity_etat_ivresse_bar" >
+        </activity>
+        <activity
+            android:name="fr.utc.payutc.EtatIvresseTab"
+            android:label="@string/title_activity_etat_ivresse_tab" >
+        </activity>
     </application>
 
 </manifest>
