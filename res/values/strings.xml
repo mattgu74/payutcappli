@@ -10,5 +10,6 @@
     <string name="title_activity_historique_tab">HistoriqueTab</string>
     <string name="title_activity_etat_ivresse_bar">EtatIvresseBar</string>
     <string name="title_activity_etat_ivresse_tab">EtatIvresseTab</string>
+    <string name="title_activity_virement_tab">VirementTab</string>
 
 </resources>

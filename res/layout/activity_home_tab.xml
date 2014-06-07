@@ -1,7 +1,81 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="fr.utc.payutc.HomeTab"
-    tools:ignore="MergeRootFrame" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dip"
+        android:paddingLeft="15dip"
+        android:text="Nom Prenom"
+		android:textStyle="italic"		
+        android:typeface="serif"   
+        android:textSize="19dip" />
+    
+    
+    	<LinearLayout 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_width="fill_parent" 
+	    	android:orientation="horizontal">
+	    	
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="15dip"
+	        android:paddingTop="15dip"
+	        android:text="Solde :"
+	        android:textSize="19dip"
+	        android:textStyle="italic"
+	        android:typeface="serif" />
+	    
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:paddingLeft="15dip"
+		    android:paddingTop="15dip"
+		    android:text=" 15 €"
+		    android:textSize="19dip"
+		    android:textStyle="italic"
+		    android:typeface="serif" />
+
+	</LinearLayout>
+   
+	<LinearLayout 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_width="fill_parent" 
+	    	android:orientation="horizontal">
+	    	
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="15dip"
+	        android:paddingTop="15dip"
+	        android:text="Etat du Compte :"
+	        android:textSize="19dip"
+	        android:textStyle="italic"
+	        android:typeface="serif" />
+	    
+		<TextView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:paddingTop="15dip"
+        	android:paddingLeft="15dip"
+        	android:text="active"
+			android:textStyle="italic"		
+        	android:typeface="serif"   
+        	android:textSize="19dip" />
+
+	</LinearLayout>
+
+	    <Button
+        	android:id="@+id/bloquer"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="center"
+        	android:layout_marginTop="30dip"
+        	android:text="Bloquer" />
+
+
+</LinearLayout>

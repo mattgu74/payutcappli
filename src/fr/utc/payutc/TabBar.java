@@ -36,26 +36,26 @@ public class TabBar extends TabActivity implements OnTabChangeListener{
           //Add intent to tab
           tabHost.addTab(spec);
      
-          /************* TAB Invite ************/
+          /************* TAB Rechargement ************/
           intent = new Intent().setClass(this, RechargementTab.class);
           spec = tabHost.newTabSpec("Second").setIndicator("")
                         .setContent(intent);  
           tabHost.addTab(spec);
      
-          /************* TAB To DO List ************/
-          intent = new Intent().setClass(this, HistoriqueTab.class);
+          /************* TAB Virement ************/
+          intent = new Intent().setClass(this, VirementTab.class);
           spec = tabHost.newTabSpec("Third").setIndicator("")
                         .setContent(intent);
           tabHost.addTab(spec);
           
-          /************* TAB Course ************/
+          /************* TAB Historique ************/
           intent = new Intent().setClass(this, HistoriqueTab.class);
           spec = tabHost.newTabSpec("Four").setIndicator("")
                         .setContent(intent);
           tabHost.addTab(spec);
           
           
-          /************* TAB Chat ************/
+          /************* TAB Etat d'ivresse ************/
           intent = new Intent().setClass(this, EtatIvresseTab.class);
           spec = tabHost.newTabSpec("Five").setIndicator("")
                         .setContent(intent);
