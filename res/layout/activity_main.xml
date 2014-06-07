@@ -2,19 +2,49 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-<!--     android:background="@color/dark_grey" > -->
 
+    <!-- android:background="@color/dark_grey" > -->
 
+    <Button
+        android:id="@+id/create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="20dip"
+        android:text="create_account" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="20dip"
+        android:text="email" />
+
+    <EditText
+        android:id="@+id/user_email"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="password" />
+
+    <EditText
+        android:id="@+id/user_password"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dip"
         android:text="connect" />
-
-
-    
 
 </LinearLayout>
