@@ -1,18 +1,25 @@
 package fr.utc.payutc;
 
-import java.io.InputStream;
 import java.security.KeyStore;
 import java.util.concurrent.ExecutionException;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
 
+import org.apache.http.HttpVersion;
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.SingleClientConnManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -44,8 +51,8 @@ public class MainActivity extends Activity {
 //		DefaultHttpClient httpClient = new DefaultHttpClient(mgr, client.getParams());
 //
 //		// Set verifier     
-//		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
-		HttpsURLConnection.setDefaultSSLSocketFactory(createAdditionalCertsSSLSocketFactory());
+		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
+//		HttpsURLConnection.setDefaultSSLSocketFactory(createAdditionalCertsSSLSocketFactory());
 		HostnameVerifier v = new HostnameVerifier() {
         	public boolean verify(String hostname, SSLSession session) {
         		return true;
@@ -71,12 +78,23 @@ public class MainActivity extends Activity {
 						RequestTicket rt = new RequestTicket();
 						String ticket = rt.execute(tbt, service).get();
 						
-						ticket = ticket.split("-cas.utc.fr")[0];
+//						ticket = ticket.split("-cas.utc.fr")[0];
 						if (ticket.startsWith("ST")){
 					//well connected
 							LoginCas lc = new LoginCas();
-							String ma = lc.execute(ticket, service).get();
+							String ma = lc.execute(getResources().getText(R.string.url).toString(),
+													ticket, service).get();
 							Log.d("ma", ma);
+							
+							LoginApp la = new LoginApp();
+							
+							String lapp = la.execute(getResources().getText(R.string.url).toString(), 
+													getResources().getText(R.string.key).toString()).get();
+							Log.d("lapp", lapp);
+							
+							Historique histo = new Historique();
+							String his = histo.execute(getResources().getText(R.string.url).toString()).get();
+							Log.d("his", his);
 							
 						}else{
 							Toast.makeText(MainActivity.this, "Erreur login", Toast.LENGTH_SHORT).show();
@@ -98,32 +116,53 @@ public class MainActivity extends Activity {
 		});
 	}
 	
-	 protected SSLSocketFactory createAdditionalCertsSSLSocketFactory() {
-	        try {
-	            final KeyStore ks = KeyStore.getInstance("BKS");
-
-	            // the bks file we generated above
-	            final InputStream in = getApplicationContext().getResources().openRawResource( R.raw.mystore);  
-	            try {
-	                // don't forget to put the password used above in strings.xml/mystore_password
-	                ks.load(in, "pauline".toCharArray());
-	            } finally {
-	                in.close();
-	            }
-
-	            return new AdditionalKeyStoresSSLSocketFactory(ks);
-	            
-	            /*TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-	            tmf.init(ks);
-	            SSLContext context = SSLContext.getInstance("SSL");
-	            context.init(null, tmf.getTrustManagers(), null);
-	            return context.getSocketFactory();*/
-
-	        } catch( Exception e ) {
-	            throw new RuntimeException(e);
-	        }
-	        
-	        
-	    }
+//	 protected SSLSocketFactory createAdditionalCertsSSLSocketFactory() {
+//	        try {
+////	            final KeyStore ks = KeyStore.getInstance("BKS");
+////
+////	            // the bks file we generated above
+////	            final InputStream in = getApplicationContext().getResources().openRawResource( R.raw.mystore);  
+////	            try {
+////	                // don't forget to put the password used above in strings.xml/mystore_password
+////	                ks.load(in, "pauline".toCharArray());
+////	            } finally {
+////	                in.close();
+////	            }
+//	        	  try {
+//	        	        KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+//	        	        trustStore.load(null, null);
+//
+//	        	        SSLSocketFactory sf = new AdditionalKeyStoresSSLSocketFactory(trustStore);
+//	        	        sf.setHostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+//
+//	        	        HttpParams params = new BasicHttpParams();
+//	        	        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+//	        	        HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+//
+//	        	        SchemeRegistry registry = new SchemeRegistry();
+//	        	        registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+//	        	        registry.register(new Scheme("https", (SocketFactory) sf, 443));
+//
+//	        	        ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
+//
+//	        	        return new DefaultHttpClient(ccm, params);
+//	        	    } catch (Exception e) {
+//	        	        return new DefaultHttpClient();
+//	        	    }
+//	            
+//	            /*TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+//	            tmf.init(ks);
+//	            SSLContext context = SSLContext.getInstance("SSL");
+//	            context.init(null, tmf.getTrustManagers(), null);
+//	            return context.getSocketFactory();*/
+//
+//	        } catch( Exception e ) {
+//	            throw new RuntimeException(e);
+//	        }
+//	        
+//	        
+//	    }
+	 
+	
 }
 	

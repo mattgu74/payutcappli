@@ -1286,6 +1286,7 @@ containing a value of this type.
         public static final int action_settings=0x7f0b000e;
         public static final int app_name=0x7f0b000d;
         public static final int hello_world=0x7f0b000f;
+        public static final int key=0x7f0b0018;
         public static final int title_activity_etat_ivresse_bar=0x7f0b0014;
         public static final int title_activity_etat_ivresse_tab=0x7f0b0015;
         public static final int title_activity_historique_tab=0x7f0b0013;
@@ -1293,6 +1294,7 @@ containing a value of this type.
         public static final int title_activity_rechargement_tab=0x7f0b0012;
         public static final int title_activity_tab_bar=0x7f0b0010;
         public static final int title_activity_virement_tab=0x7f0b0016;
+        public static final int url=0x7f0b0017;
     }
     public static final class style {
         /** 
