@@ -21,7 +21,8 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-import javax.net.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+
 
 import android.util.Log;
 
@@ -33,7 +34,7 @@ public class AdditionalKeyStoresSSLSocketFactory extends SSLSocketFactory {
     protected SSLContext sslContext = SSLContext.getInstance("TLS");
 
     public AdditionalKeyStoresSSLSocketFactory(KeyStore keyStore) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException, UnrecoverableKeyException {
-        super();
+        super(keyStore);
         sslContext.init(null, new TrustManager[]{new AdditionalKeyStoresTrustManager(keyStore)}, new java.security.SecureRandom());
     }
 
@@ -139,38 +140,6 @@ public class AdditionalKeyStoresSSLSocketFactory extends SSLSocketFactory {
         }
     }
 
-	@Override
-	public String[] getDefaultCipherSuites() {
-		return sslContext.getSocketFactory().getDefaultCipherSuites();
-	}
-
-	@Override
-	public String[] getSupportedCipherSuites() {
-		return sslContext.getSocketFactory().getSupportedCipherSuites();
-	}
-
-	@Override
-	public Socket createSocket(String host, int port) throws IOException,
-			UnknownHostException {
-		return sslContext.getSocketFactory().createSocket(host, port);
-	}
-
-	@Override
-	public Socket createSocket(InetAddress host, int port) throws IOException {
-		return sslContext.getSocketFactory().createSocket(host, port);
-	}
-
-	@Override
-	public Socket createSocket(String arg0, int arg1, InetAddress arg2, int arg3)
-			throws IOException, UnknownHostException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Socket createSocket(InetAddress host, int port, InetAddress localHost,
-			int localPort) throws IOException {
-		return sslContext.getSocketFactory().createSocket(host, port, localHost, localPort);
-	}
+	
 
 }

@@ -11,5 +11,10 @@
     <string name="title_activity_etat_ivresse_bar">EtatIvresseBar</string>
     <string name="title_activity_etat_ivresse_tab">EtatIvresseTab</string>
     <string name="title_activity_virement_tab">VirementTab</string>
-
+	    <string name="server_unregistered">ServerUnregistered</string>
+    <string name="server_unregister_error">ServerUnregisteredError</string>
+    <string name="server_registering">ServerRegistering</string>
+    <string name="server_registered">ServerRegistered</string>
+    <string name="server_register_error">ServerRegisteredError</string>    <string name="url">https://assos.utc.fr/payutc_dev/server/MYACCOUNT/</string>
+    <string name="key">5d75d32dfht0beyh57b6da325a2134gt</string>
 </resources>
